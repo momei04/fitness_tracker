@@ -1,0 +1,59 @@
+/* TODO: Centralize in style.css */
+.exercise_wrapper{
+    gap: 1rem;
+    display: flex !important;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.exercise{
+    flex-grow: 0;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    width: calc(25vw - 2rem);
+    aspect-ratio: 1;
+    background-color: var(--white);
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.exercise:hover .layer{
+    transition: .4s;
+    opacity: .5;
+}
+
+.exercise.add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exercise.add h2{
+    color: var(--black);
+}
+
+.exercise h4{
+    color: var(--white);
+    position: inherit;
+    z-index: 2;
+}
+
+
+.modal-content form div{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+@media (min-width: 800px) {
+    .exercise_wrapper {
+        flex-direction: row;
+        justify-content: left;
+    }
+}

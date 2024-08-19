@@ -1,0 +1,158 @@
+.content{
+    display: flex;
+    width: 100vw;
+    padding: 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.workouts{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 2em;
+    padding-left: 2em;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-self: center;
+    margin-bottom: 2em;
+    width: fit-content;
+    justify-content: center;
+}
+
+.list{
+    width: 100%;
+    max-height: 600px;
+    padding-top: 2em;
+    height: 300px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.item{
+    position: relative;
+}
+
+.item a{
+    opacity: .5;
+    flex-shrink:0;
+    text-decoration: none;
+    color: var(--black);
+    width: 100%;
+    display: flex;
+    padding-right: .5rem;
+    overflow: visible;
+    
+    justify-content: space-between;
+}
+
+.deleteButton{
+    padding: .5em;
+    border: none;
+    position: absolute;
+    top: -.5rem;
+    right: 0;
+    height: max-content;
+    aspect-ratio: 1;
+    z-index: 8;
+    background-color: var(--black);
+    display: none;
+    border-radius: 100%;
+}
+
+.deleteButton:hover{
+    
+    background-color: var(--accent);
+    display: none;
+    border-radius: 100%;
+}
+
+.deleteButton i{
+    font-size: .75rem;
+    color: var(--white);
+}
+
+.img-container{
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+
+.img-container img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: var(--gray);
+    top: 0;
+    border: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.item:hover .img-container{
+    background-image: url(--bg-img);
+}
+
+.add-workout{
+    position: absolute;
+    bottom: 0;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2em;
+    align-items: center;
+    gap: 1em;
+    background-color: var(--white);
+    width: 100%;
+}
+
+.addWrapper{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.add-workout button{
+    padding: 1em;
+    border-radius: 100%;
+    border: none;
+    color: var(--white);
+    transition: .5s;
+    background-color: var(--accent);
+}
+
+.add-workout button:hover{
+    background-color: var(--accent-hover); 
+}
+
+.addForm{
+    overflow: hidden;
+    display: none;
+    bottom: -100%;
+    transition: .8s;
+}
+
+.add-workout button.add_workout_btn{
+    width: 100%;
+    border-radius: .25em;
+}
+
+.addForm.show{
+    overflow: visible;
+    display: flex;
+    bottom: 0;
+}

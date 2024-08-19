@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root{
+    --bg-color: #f3f3f3;
+    --accent: #E94F37;
+    --accent-hover:#B82A14;
+    --black: #151515;
+    --white: #FEFCFB;
+    --gray: #d3d3d3;
+    --red: #0353A4;
+    --red-hover: #FDF0D5;
+    --green: #DF2935;
+    --green-hover: #FDF0D5;
+    --placeholder: #a9a499;
+
+    font-size: 16px;
+        font-family: "Raleway", sans-serif;
+}
+
+h1 {
+    font-size: 93px;
+    font-weight: 200;
+}
+
+h2 {
+    font-size: 58px;
+    font-weight: 200;
+}
+h3 {
+    font-size: 47px;
+    font-weight: normal;
+}
+h4 {
+    font-size: 33px;
+    font-weight: normal;
+}
+
+h5 {
+    font-size: 23px;
+    font-weight: normal;
+}
+
+h6 {
+    font-size: 19px;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+p.sub {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.subtitle-1 {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.subtitle-2 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+button {
+    font-size: 14px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.overline {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.caption {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* You need to give a background-color to the element manually */
+.label{
+    padding: .5em;
+    top: 0;
+    position: inherit;
+    z-index: 2;
+    width: 0;
+    margin-top: .25em;
+    opacity: 1;
+    color: var(--white);
+    width: fit-content;
+    border-radius: .25em;
+}
+
+.layer{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    opacity: .7;
+    background: var(--black);
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(25,27,34,1) 0%, rgba(101,102,107,0.5116640406162465) 100%);
+}
+
+.link_layer{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 8;
+    opacity: 1;
+}
+
+/* Elements */
+.content{
+    padding: 2em;
+    overflow: hidden;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em;
+
+}
+
+input, textarea, select{
+    border: none;
+    border-bottom: 1px solid var(--placeholder);
+    padding: .5em 1em;
+    background-color: transparent;
+}
+
+form button{
+    background-color: var(--accent);
+    border: none;
+    padding: 1em;
+    color: var(--white);
+    margin-top: 1rem;
+    transition: .4s;
+    font-weight: bold;
+}
+
+form button:hover{
+    background-color: var(--accent-hover);
+    border: none;
+    padding: 1em;
+    color: var(--white);
+}

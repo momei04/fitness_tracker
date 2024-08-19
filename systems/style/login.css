@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--white);
+}
+
+.form_container{
+    display: flex;
+    padding: 0;
+}
+
+.wrapper{
+    width: 100%;
+}
+
+.img-container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.img-container img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.loginForm{
+    height: 100%;
+    display: flex;
+    padding: 2em;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: space-between;
+    max-width: 50vw;
+}
+
+.form_content{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
