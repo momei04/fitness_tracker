@@ -65,7 +65,14 @@
         </div>
     </div>
     <form action="../formValidation/formHandler.php" method="post" class="insertExerciseToWorkout">
-        <h3><?php $workout->getLanguageString('USER_NAME', $_SESSION['language_id']); ?></h3>
+    <div class="formHeader">
+        <h3><?php $workout->getLanguageString('ADD_EXERCISE', $_SESSION['language_id']); ?></h3>
+        <div class="close_insert_workout">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </div>
+        
+    </div>
+        
         <select id="edit_workout_exercise_id" name="exercise_id">
             <?php 
                 $exercises = $exercise->getAllExercises(); 

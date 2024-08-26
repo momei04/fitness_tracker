@@ -200,6 +200,8 @@ button{
     gap: 1em;
 }
 
+
+
 .addWorkout input, textarea, select{
     height: 48px;
     width: 100%;
@@ -255,5 +257,24 @@ form.insertExerciseToWorkout{
     display: none;
 }
 
-/* Carousel */
+.insertExerciseToWorkout .formHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+.formHeader .close_insert_workout{
+    padding: .5em;
+    padding-right: 0;
+    color: var(--black);
+    opacity: .5;
+    transition: .2s
+}
+
+.close_insert_workout i{
+    font-size: 2em;
+}
+
+.close_insert_workout:hover{
+    opacity: 1;
+}

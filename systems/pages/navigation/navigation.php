@@ -16,13 +16,19 @@
                 <a href="../../pages/exercises/exercises.php"><?php $workout->getLanguageString('EXERCISES', $_SESSION['language_id'])?></a>
             </li>
             <li>
-                <a href="../../pages/stats/stats.php"><?php $workout->getLanguageString('STATS', $_SESSION['language_id'])?></a>
-            </li>
-            <li>
                 <a href="../../pages/settings/settings.php"><?php $workout->getLanguageString('SETTINGS', $_SESSION['language_id'])?></a>
             </li>
             <li>
-                <a href="../../pages/login/userAuth.inc.php"><?php $workout->getLanguageString('LOGOUT', $_SESSION['language_id'])?></a>
+                <a>
+                    <?php  if(isset($_SESSION['user_id'])){ ?>
+                        <form action="../login/logout.inc.php" class="logout" method="post">
+                            <button type="submit" class="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <p><?php $workout->getLanguageString('LOGOUT', $_SESSION['language_id'])?></p>
+                            </button>
+                        </form>
+                    <?php } ?>
+                </a>
             </li>
         </ul>
     </nav>

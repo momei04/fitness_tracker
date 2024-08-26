@@ -31,7 +31,7 @@
                             
                         </a>
                         <button data-title="<?php echo $workout['workout_name'];?>" data-user_id="<?php echo $_SESSION['user_id'];?>" class="deleteButton">
-                            <i class="fa-solid fa-x"></i>
+                            <i class="fa-regular fa-circle-xmark"></i>
                         </button>
                     </div>
                         
@@ -45,7 +45,7 @@
                     </button>
                     <p>Add a workout</p>
                 </div>
-                    
+
                 <form action="" method="post" class="addForm">
                     <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>">
                     <input type="text" class="workout_title" name="workout_title" placeholder="<?php $workoutClass->getLanguageString('WORKOUT_TITLE', $_SESSION['language_id']); ?>" id="">
@@ -77,6 +77,8 @@
         addButton.addEventListener('click', (e) => {
             e.preventDefault();
             addForm.classList.toggle('show');
+            let button = document.querySelector('.addBtn');
+            button.classList.toggle('close');
         });
         //changin image when hovering item
         let itemList = document.querySelectorAll('.item');

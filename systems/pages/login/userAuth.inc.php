@@ -23,12 +23,7 @@
     <!-- Sign up -->
     <?php include 'signup/signupForm.php' ?>
 
-    <?php  if(isset($_SESSION['user_id'])){ ?>
-        <h3>Log out</h3>
-        <form action="logout.inc.php" class="toggle" method="post">
-            <button>Log out</button>
-        </form>
-    <?php } 
+    <?php 
         check_signup_errors();
     ?>
 </div>

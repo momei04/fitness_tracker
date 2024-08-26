@@ -46,7 +46,7 @@ function viewResult(data) {
 }
 
 /* Adding a exercise */
-/* let addExerciseForm = document.querySelector('.addExerciseForm');
+let addExerciseForm = document.querySelector('.addExerciseForm');
 if(addExerciseForm != null){
     document.querySelector('.addExerciseForm').addEventListener("submit", function(event){
         event.preventDefault()
@@ -83,7 +83,7 @@ if(addExerciseForm != null){
         });
     });
     window.onload = getMuscleGroups;
-} */
+}
 
 //Edit a Workout
 let addFormButton = document.querySelector('.add_exercise_button');
@@ -96,9 +96,17 @@ if (addFormButton != null) {
         } else {
             insertExercise.style.display = 'none';
         }
+
+        
     })
 }
 
+let closeButtonInsertWorkout = document.querySelector('.close_insert_workout');
+        if(closeButtonInsertWorkout != null){
+            closeButtonInsertWorkout.addEventListener('click', () => {
+                insertExercise.style.display = 'none';
+            });
+        }
 
 
 if(insertExercise != null){
