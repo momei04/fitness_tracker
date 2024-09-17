@@ -1,0 +1,26 @@
+version: "3" ##Welche Version von YAML wird benutzt 3 ist die aktuellste
+services:   # this section defines all the services you want to run
+  webserver:  # service name for our web server
+    image: nginx:latest   # specifies the docker image to use in this case the latest version of nginx
+    ports:  #This is for port forwarding. The format is 'HOST:CONTAINER', so port 80 on your local machine maps to port 80 on the container.
+      - "80:80"
+    volumes:  #volumes and added two instructions in it
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf   # nginx/nginx.conf file on your machine is mounted as /etc/nginx/conf.d/nginx.conf in the container
+      - ./app:/app    #The app directory is mounted as /app inside the container.
+  php:
+    image: "my-php"
+    build: services/php
+    volumes:
+      - ./app:/app
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "my_database"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    ports:
+      - 3308:3306 # bind Port 3308 auf den Container Port 3306
+
+volumes:
+  mysqldata: {}
