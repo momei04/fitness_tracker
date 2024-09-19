@@ -12,7 +12,27 @@
     <?php
         $db = new Db();
         $querry = "Select * FROM users";
-        var_dump($db->execute($querry));
+        $users = $db->execute($querry);
     ?>
+    <table>
+        <thead>
+            <tr>
+                <td>username</td>
+                <td>Vorname</td>
+                <td>Nachname</td>
+                <td>Email</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user) {?>
+                <tr>
+                    <td><?php echo $user['user_name']; ?></td>
+                    <td><?php echo $user['first_name']; ?></td>
+                    <td><?php echo $user['last_name']; ?></td>
+                    <td><?php echo $user['email']; ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 </html>
