@@ -1,3 +1,4 @@
+<?php include '../classes/Db.class.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +9,10 @@
 </head>
 <body>
     <h1>Hello there</h1>
+    <?php
+        $db = new Db();
+        $querry = "Select * FROM users";
+        var_dump($db->execute($querry));
+    ?>
 </body>
 </html>
