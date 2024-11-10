@@ -1,0 +1,65 @@
+.modal {
+  transition: 0.2s;
+  display: none;
+  overflow: hidden;
+}
+.modal.open {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  overflow: auto;
+  width: 600px;
+  z-index: 5;
+  max-width: 100%;
+}
+.modal.open .modal-content {
+  width: 100%;
+  height: 100%;
+  padding: 1em 2em 1em 1em;
+  overflow: auto;
+  z-index: 6;
+}
+.modal.open .modal-content table {
+  width: 100%;
+}
+.modal.open .modal-content table tbody td, .modal.open .modal-content table tbody th, .modal.open .modal-content table thead td, .modal.open .modal-content table thead th {
+  text-align: center;
+}
+.modal .closeBtn {
+  padding: 1em;
+  border: none;
+  background-color: transparent;
+}
+.modal .closeBtn i {
+  font-size: 2em;
+  color: var(--black);
+}
+
+.modal-overview {
+  display: none;
+  overflow: hidden;
+  z-index: -5;
+}
+.modal-overview.active {
+  display: block;
+  overflow: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.45;
+}
+
+h3.title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+/*# sourceMappingURL=modal.css.map */

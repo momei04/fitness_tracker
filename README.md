@@ -1,19 +1,6 @@
-## Manageing football teams with ease
+See https://youtu.be/2Bxh5FNGznQ for a full walk through on spinning up this full-stack Php web app with MySql and phpMySql
 
-### Goal
-- Building an app to manage Football Teams
-    - Overview over all Plyers
-    - Overview over all Events (Matches and trainings)
-    - planning of training s made easy
-    - lerarning to work with git, docker and mariaDb
+Requirements: 
+* Docker 
 
-### Local Development
-#### Starten der Docker Umgebung
-- `docker compose up`
-- go to [http://127.0.0.0/]
-
-### Tools used
-- PHP for the backend
-- mariaDb for Dtabase
-- React for the front end (yeah maybe)
-    - tailwind.css for styling 
+To run this code, run command: `docker-compose up` from the shell within the directory of this project after cloning it. 
