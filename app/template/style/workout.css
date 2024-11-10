@@ -1,0 +1,154 @@
+.workout-container{
+    display: flex;
+}
+
+.workouts{
+    padding: 8em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.workouts .workout-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.workouts .title-container h1{
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.workouts .title-container h3{
+    font-weight: 200;
+    opacity: .5;
+    font-size: 2em;
+}
+
+.workout-list a{
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 1.5em;
+    padding: .5em 0;
+}
+
+.workout-cover-img-container{
+    background-color: var(--white);
+}
+
+.workout-cover-img-container .layer{
+    opacity: 0;
+}
+
+.workout-cover-img-container img{
+    border: none;
+    /*display: none;*/
+}
+
+/*Workout Detail Page*/
+.workout-detail-container{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: repeat(4, 25%);
+    grid-template-columns: 25% auto auto auto;
+    grid-template-areas: 'title title title title'
+                        'exercises exercises exercises exercises'
+                        'exercises exercises exercises exercises'
+                        'general_info general_info general_info general_info';
+}
+
+.workout-detail-container .title-container{
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    justify-content: space-between;
+    align-items: center;
+    grid-area: title;
+}
+
+.title-container img{
+    position: absolute;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.title-container #exercise_add{
+    color: var(--white);
+    background-color: transparent;
+    width: auto;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: 2px solid var(--white);
+    padding: 2em;
+    z-index: 2;
+    margin-right: 1em;
+}
+
+.title-container #exercise_add i{
+    font-size: 2em;
+    font-weight: 200;
+}
+
+.workout-detail-container .title-container h1{
+    font-weight: bold;
+    margin-left: .5em;
+    font-size: 4em;
+    z-index: 2;
+    color: var(--white);
+}
+
+.exercises_container{
+    background-color: var(--gray);
+    grid-area: exercises;
+    padding: 2em;
+}
+
+.exercises_container table{
+    width: 100%;
+    padding: 1em;
+}
+.exercises_container table thead tr th{
+    text-align: left;
+    padding: 1em 0;
+}
+.exercises_container table tbody button{
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 1em;
+    aspect-ratio: 1;
+    width: max-content;
+}
+
+.exercises_container table tbody tr td{
+    padding: .5em 0;
+    font-weight: 200;
+}
+
+.general_info{
+    width: 100%;
+    background-color: var(--white);
+    grid-area: general_info;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.general_info h3{
+    margin-bottom: .5em;
+}
+
+.general_info p{
+    max-width: 650px;
+}

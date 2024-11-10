@@ -1,0 +1,42 @@
+CREATE TABLE Kunde(
+    KundeNr INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Vorname VARCHAR(255) NOT NULL,
+    Strasse VARCHAR(255) NOT NULL,
+    PLZ INT(5) NOT NULL,
+    PRIMARY KEY (KundeNr),
+    FOREIGN KEY (PLZ) REFERENCES Ort_Plz(PLZ)
+);
+
+CREATE TABLE Ort_Plz(
+    Id INT NOT NULL AUTO_INCREMENT,
+    PLZ CHAR(5) NOT NULL,
+    Ort VARCHAR(255) NOT NULL,
+    PRIMARY KEY (Id)
+);
+
+CREATE TABLE Rechnung(
+    RechNr INT NOT NULL AUTO_INCREMENT,
+    Datum DATE NOT NULL,
+    KunNr INT NOT NULL,
+    PRIMARY KEY (RechNr),
+    FOREIGN KEY (KunNr) REFERENCES Kunde(KundeNr)
+
+);
+
+CREATE TABLE Artikel(
+    ArtikelNr INT NOT NULL AUTO_INCREMENT,
+    Bezeichnung VARCHAR(255) NOT NULL,
+    Preis DECIMAL(10, 2),
+    PRIMARY KEY (ArtikelNr)
+);
+
+CREATE TABLE RechnungsPos(
+    ArtikelNr INT NOT NULL,
+    RechNr INT NOT NULL,
+    Anzahl INT NOT NULL,
+    Preis DECIMAL(10, 2),
+    PRIMARY KEY (ArtikelNr, RechNr),
+    FOREIGN KEY (ArtikelNr) REFERENCES Artikel(ArtikelNr),
+    FOREIGN KEY (KunNr) REFERENCES Kunde(KundeNr)
+)
