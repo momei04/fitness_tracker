@@ -138,7 +138,8 @@ class User extends Db
 
     public function isValidEmail($email)
     {
-        return true;/*filter_var($email, FILTER_VALIDATE_EMAIL) === $email;*/
+        return true;
+        /*filter_var($email, FILTER_VALIDATE_EMAIL) === $email;*/
         /*&& preg_match('/@.+\./', $email);*/
     }
 
@@ -158,7 +159,6 @@ class User extends Db
     {
         $sql = "SELECT id FROM users WHERE user_name = ?;";
         $return = $this->execute($sql, [$user_name]);
-        var_dump($return);
         if (empty($return)) {
             return null;
         } else {
@@ -169,7 +169,7 @@ class User extends Db
 
     function isLoggedIn()
     {
-        if (isset($_SESSION['user']['user_id']) && isset($_SESSION['user']['logged_in'])) {
+        if (isset($_SESSION['user']['user_id']) && $_SESSION['user']['logged_in'] == 1) {
             return true;
         } else {
             return false;

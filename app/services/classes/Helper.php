@@ -32,5 +32,16 @@ class Helper extends Db{
         return $workout->getExerciseTypes();
     }
 
+    public function getWorkoutTypes()
+    {
+        $workout = new Workout();
+        return $workout->getWorkoutTypes();
+    }
+
+    public function getPaths(){
+        $workout = new Workout();
+        return $workout->getPaths();
+    }
+
 
 }

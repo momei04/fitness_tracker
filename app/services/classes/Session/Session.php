@@ -81,7 +81,6 @@ class Session extends \Db
     {
         $sql = "SELECT id FROM users WHERE user_name = ?";
         $res = $this->execute($sql, [$username]);
-        var_dump($res);
         return $res[0]['id'];
     }
 }

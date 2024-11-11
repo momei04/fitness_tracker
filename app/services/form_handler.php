@@ -1,5 +1,8 @@
 <?php
-$_POST = json_decode(file_get_contents('php://input'), true);
+
+if(!isset($_POST['page'])) {
+    $_POST = json_decode(file_get_contents('php://input'), true);
+}
 if(!empty($_POST['action'])) {
 
     $action = $_POST['action'];
@@ -25,29 +28,27 @@ if(!empty($_POST['action'])) {
                         $user = new User($user_name, $password, $email, $first_name, $last_name, $street, $house_nr, $plz, $ort);
                         if ($user->validatePassword($password)) {
                             $password = password_hash($password, PASSWORD_DEFAULT);
+                            //var_dump($user->isValidEmail($email));
+                            if ($user->isValidEmail($email)) {
+                                $user->save($user_name, $first_name, $last_name, $email, $street, $plz, $ort, $password);
+                                $id = $user->getId($_POST['user_name']);
+                                $session->setUser($user, $id);
+                                header("Location: ../template/pages/dashboard/dashboard.php");
+
+                            }else{
+                                $message = $session->getLanguageString('INVALID_EMAIL', 1);
+                                $session->removeLogIn($message);
+                                header("Location: ../template/pages/userAuth/userAuth.php");
+                                die();
+                            }
+
                         } else {
                             $message = $session->getLanguageString('PASSWORD_NO_SPECIALCHARS_OR_CAPITAL_LETTER', 1);
                             $session->removeLogIn($message);
                             header('Location: ../template/pages/userAuth/userAuth.php');
                             break;
                         }
-
-                        if ($user->isValidEmail($email)) {
-
-                            $user->save($user_name, $first_name, $last_name, $email, $street, $plz, $ort, $password);
-                            $session->setUser($user);
-                        }else{
-                            $message = $session->getLanguageString('INVALID_EMAIL', 1);
-                            $session->removeLogIn($message);
-                            header("Location: ../template/pages/userAuth/userAuth.php'");
-                            die();
-                        }
-
-                        if($user->isLoggedIn()){
-                            header('Location: ../template/pages/dashboard/dashboard.php');
-                            die();
-                        }
-
+                        header("Location: ../template/pages/userAuth/userAuth.php");
                     } else {
                         $session->removeLogIn('');
                         header("Location: ../template/pages/userAuth/userAuth.php");
@@ -77,6 +78,7 @@ if(!empty($_POST['action'])) {
             }
             break;
         case 'workout':
+
             require_once 'classes/Workout/Workout.class.php';
             $workout = new Workout();
             switch ($action) {
@@ -99,6 +101,27 @@ if(!empty($_POST['action'])) {
                     $workout->delete($workout_id, $exercise, $user_id);
                     $content = $workout->getWorkoutExercise($workout_id, $exercise, $user_id);
 
+                    echo json_encode($content);
+                    break;
+
+                case 'add_workout':
+                    $user = $_POST['user'];
+                    $workout_name = $_POST['name'];
+                    $workout_type = $_POST['workout_type'];
+                    $desc = $_POST['description'];
+                    $img = $_POST['workout_img'];
+                    $workout->addWorkout($user, $workout_name, $workout_type, $desc, $img);
+                    $content = $workout->getWorkouts($user);
+                    echo json_encode($content);
+                    break;
+
+                case 'delete_workout':
+                    $data = json_decode(file_get_contents('php://input'), true);
+
+                    $user = $data['user_id'];
+                    $workout_name = $data['workout_name'];
+                    $workout->deleteWorkout($workout_name);
+                    $content = $workout->getWorkouts($user);
                     echo json_encode($content);
                     break;
             }

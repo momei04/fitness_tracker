@@ -30,6 +30,8 @@ CREATE TABLE users(
     FOREIGN KEY (language_id) REFERENCES language_languages(id)
 );
 
+
+
 -- muscle group
 CREATE TABLE muscle_group(
     id INT NOT NULL AUTO_INCREMENT,
@@ -56,14 +58,14 @@ CREATE TABLE workout_type(
 );
 
 CREATE TABLE workout_cover_images(
-    id INT NOT NULL AUTO_INCREMENT,
+    img_id INT NOT NULL AUTO_INCREMENT,
     path VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (img_id)
 );
 
 CREATE TABLE workout(
     id INT NOT NULL AUTO_INCREMENT,
-    workout_name VARCHAR(255) NOT NULL,
+    workout_name VARCHAR(255) NOT NULL UNIQUE,
     workout_description TEXT NOT NULL,
     user_id INT NOT NULL,
     workout_type INT NOT NULL,
@@ -71,7 +73,7 @@ CREATE TABLE workout(
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (workout_type) REFERENCES workout_type(id),
-    FOREIGN KEY (cover_img_id) REFERENCES workout_cover_images(id)
+    FOREIGN KEY (cover_img_id) REFERENCES workout_cover_images(img_id)
 );
 
 CREATE TABLE workout_exercise(
@@ -91,9 +93,15 @@ CREATE TABLE workout_exercise(
 
 ALTER TABLE `language_strings` DROP INDEX `language_key`, ADD UNIQUE `language_key` (`language_key`, `language_id`);
 
+
+
 INSERT INTO `language_languages` (`id`, `name`, `img_path`)
 VALUES (NULL, 'Deutsch', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png'),
        (NULL, 'Englisch', 'https://cdn.britannica.com/44/344-050-94536674/Flag-England.jpg');
+
+INSERT INTO `users` (`id`, `user_name`, `first_name`, `last_name`, `email`, `ort`, `street`, `plz`, `password`, `language_id`) VALUES
+    (1, 'mmeier', 'Moritz', 'Meier', 'moritzmeiermac@gmail.com', 'Hirschau', 'Hauptstraße', '92242', '$2y$10$wKpdXftX98n6.93KjzmMCuV99./7AUNyZN/3F1lQC8CKXCKtw1ks.', 1);
+
 
 INSERT INTO `language_strings`(`language_key`, `language_id`, `language_string`)
 VALUES ('INVALID_EMAIL', 1,'Die angegebene Email Adresse ist ungültig');
@@ -121,7 +129,7 @@ VALUES ('LOGOUT_SUCCESS',2,'Logout sucessfull');
 
 INSERT INTO `language_strings`(`language_key`, `language_id`, `language_string`)
 VALUES ('GENERAL_ERROR',1,'Es ist ein Fehler aufgetreten'),
-       ('GENERAL_ERROR',1,'An error occured');
+       ('GENERAL_ERROR',2,'An error occured');
 
 INSERT INTO language_strings(language_key, language_string, language_id)
 VALUES('EXERCISES', 'Übungen', 1), ('EXERCISES', 'Exercises', 2),
@@ -138,10 +146,6 @@ VALUES('Fußball Training'),
       ('Kraft Training'),
       ('Cardio Training');
 
-INSERT INTO workout(user_id, workout_name, workout_description, workout_type, cover_img_id)
-VALUES(1, 'Chest Day', 'Fokus auf Brust und Bauch Muskulatur', 2, 1),
-      (1, 'Leg Day', 'Fokus auf Beinmuskulatur', 2, 1),
-      (1, 'Fußballtraining', 'Mannschaftstraining', 3, 1);
 
 INSERT INTO muscle_group(muscle_name, label_color)
 VALUES('Brust', '#004b23'),('Bauch', '#006400'),('Trizeps', '#007200'),('Bizeps', '#008000'),('Schultern', '#38b000'),('Rücken', '#70e000'),('Po', '#9ef01a'),('Nacken', '#ccff33');
@@ -153,6 +157,3 @@ VALUES
     ('Dips', 1, 'https://www.pullup-dip.de/cdn/shop/articles/straight-bar-dips-parallettes_600x600_a6d0362a-f0c8-49f1-98ea-a445011132e4.jpg?v=1690960849'),
     ('Shoulder Shrugs', 8, 'https://kinxlearning.com/cdn/shop/files/exercise-40_1000x.jpg?v=1613157925'),
     ('Lastzug', 6, 'https://www.uebungen.ws/wp-content/uploads/2011/07/latzug-1.jpg');
-
-INSERT INTO workout_exercise(user_id, workout_id, exercise_id, sets, reps, weight)
-VALUES (1, 1, 1, 3, 10, 60), (1, 1, 2, 3, 10, 60), (1, 1, 3, 3, 10, 10);

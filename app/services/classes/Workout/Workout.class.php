@@ -3,7 +3,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/services/classes/Db.class.php';
 
 class Workout extends Db{
     public function getWorkouts($id){
-        $sql = "SELECT * FROM workout w  JOIN workout_cover_images wc ON wc.id = w.cover_img_id  WHERE user_id = ?";
+        $sql = "SELECT * FROM workout w INNER JOIN workout_cover_images wc ON wc.img_id = w.cover_img_id WHERE w.user_id = ?";
         return $this->execute($sql, [$id]);
     }
 
@@ -18,12 +18,7 @@ class Workout extends Db{
     }
 
     public function getWorkoutDatails($workout_id) {
-        $sql = "SELECT *  
-                FROM workout w 
-                JOIN workout_type wt ON wt.id = w.id 
-                JOIN workout_cover_images wc ON wc.id = w.cover_img_id 
-                JOIN users u ON u.id = w.user_id
-                WHERE w.id = ?";
+        $sql = "SELECT * FROM workout w JOIN workout_type wt ON wt.id = w.workout_type JOIN workout_cover_images wc ON wc.img_id = w.cover_img_id JOIN users u ON u.id = w.user_id WHERE w.id = ?";
         return $this->execute($sql, [$workout_id]);
     }
 
@@ -62,5 +57,29 @@ class Workout extends Db{
                 JOIN exercise e ON e.id = we.exercise_id
                 WHERE we.workout_id = ? AND exercise_id = ? AND user_id = ?";
         return $this->execute($sql, [$workout_id, $exercise, $user_id]);
+    }
+
+    public function addWorkout($user, $workout_name, $workout_type, $desc, $img)
+    {
+        $sql = "INSERT INTO workout(user_id, workout_name, workout_type, workout_description, cover_img_id) VALUES (?,?,?,?, ?)";
+        return $this->execute($sql, [$user, $workout_name, $workout_type, $desc, $img]);
+    }
+
+    public function getWorkoutTypes()
+    {
+        $sql = "SELECT * FROM workout_type";
+        return $this->execute($sql);
+    }
+
+    public function getPaths()
+    {
+        $sql = "SELECT * FROM workout_cover_images";
+        return $this->execute($sql);
+    }
+
+    public function deleteWorkout($workout_name)
+    {
+        $sql = "DELETE FROM workout WHERE workout_name = ?";
+        $this->execute($sql, [$workout_name]);
     }
 }
