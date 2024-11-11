@@ -1,6 +1,7 @@
 <?php
 session_start();
     if (isset($_SESSION['user']) && $_SESSION['user']['logged_in'] == 1) {
+
         header("Location: ../dashboard/dashboard.php");
         die();
     }else{

@@ -8,7 +8,9 @@
 <?php
     $workout_info = $helper->getWorkoutDatails($_GET['workout_id']);
     $exercises = $helper->getWorkoutExercises($_GET['workout_id']);
+
 ?>
+<?php if(!empty($workout_info)){ ?>
 <div class="workout-detail-container">
     <div class="title-container">
         <h1><?php echo $workout_info[0]['workout_name'];?></h1>
@@ -18,6 +20,8 @@
         <img src="<?php echo $workout_info[0]['path']?>" alt="">
         <div class="layer"></div>
     </div>
+
+
     <div class="exercises_container">
         <table id="workout_overview_table">
             <thead>
@@ -108,6 +112,12 @@
             </form>
         </div>
     </div>
+
     <div class="modal-overview"></div>
     <script src="../../js/pages/workout.js"></script>
+<?php }else{
+    header("Location: ../dashboard/dashboard.php");
+}?>
+
 <?php include_once '../../includes/footer.php';?>
+

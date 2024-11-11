@@ -34,6 +34,26 @@
     padding: .5em 0;
 }
 
+.workout{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workout .delete_button{
+    background-color: transparent;
+    border: 1px solid var(--black);
+    border-radius: 100%;
+    padding: .5em;
+    width: max-content;
+    aspect-ratio: 1;
+
+}
+
+.workout .delete_button i{
+    color: var(--black);
+}
+
 .workout-cover-img-container{
     background-color: var(--white);
 }

@@ -1,4 +1,4 @@
-CREATE TABLE Kunde(
+/*CREATE TABLE Kunde(
     KundeNr INT NOT NULL AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL,
     Vorname VARCHAR(255) NOT NULL,
@@ -39,4 +39,4 @@ CREATE TABLE RechnungsPos(
     PRIMARY KEY (ArtikelNr, RechNr),
     FOREIGN KEY (ArtikelNr) REFERENCES Artikel(ArtikelNr),
     FOREIGN KEY (KunNr) REFERENCES Kunde(KundeNr)
-)
+)*/
