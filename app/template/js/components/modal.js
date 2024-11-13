@@ -16,12 +16,25 @@ function initializeModal(trigger, modalClass){
                 modalOverview.classList.remove('active');
                 modal.classList.remove('open');
                 modal.classList.remove('open');
+
             });
 
             closeBtn.addEventListener('click', (e)=>{
                 modalOverview.classList.remove('active');
                 modal.classList.remove('open');
                 modal.classList.remove('open');
+                let chartStatus = Chart.getChart("chart_MULTI");
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
             });
 
 }
+
+/*
+function open_modal(class_name) {
+    let modal = document.querySelector(class_name);
+    let modalOverview = document.querySelector('.modal-overview');
+    modalOverview.classList.add('active');
+    modal.classList.add('open');
+}*/

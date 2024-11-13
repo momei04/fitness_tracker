@@ -24,11 +24,21 @@ class Workout extends Db{
 
     public function getWorkoutExercises($workout_id) {
         $sql = "
-                SELECT * 
+                SELECT we.sets, we.reps, MAX(we.weight) AS weight, we.user_id, e.exercise_name, e.muscle_id, we.exercise_id, we.workout_id 
                 FROM workout_exercise we
                 JOIN exercise e ON e.id = we.exercise_id
-                WHERE we.workout_id = ?";
+                WHERE we.workout_id = ?
+                GROUP BY we.sets, we.reps, we.user_id, e.exercise_name, e.muscle_id, we.exercise_id, we.workout_id";
         return $this->execute($sql, [$workout_id]);
+    }
+
+    public function getExerciseHistory($user_id, $workout_id, $exercise_id) {
+        $sql = "
+                SELECT we.sets, we.reps, we.weight AS weight, e.exercise_name, DATE_FORMAT( we.updated_at, '%d.%m.%Y') AS updated_at  
+                FROM workout_exercise we
+                JOIN exercise e ON e.id = we.exercise_id
+                WHERE we.workout_id = ? AND we.exercise_id = ? AND we.user_id = ?";
+        return $this->execute($sql, [$workout_id, $exercise_id, $user_id]);
     }
 
     public function getExerciseTypes() {
@@ -77,9 +87,23 @@ class Workout extends Db{
         return $this->execute($sql);
     }
 
-    public function deleteWorkout($workout_name)
+    public function deleteWorkout($workout_id)
     {
-        $sql = "DELETE FROM workout WHERE workout_name = ?";
-        $this->execute($sql, [$workout_name]);
+        $sql_workout_exercise = "DELETE FROM workout_exercise WHERE workout_id = ?";
+        $this->execute($sql_workout_exercise, [$workout_id]);
+        $sql = "DELETE FROM workout WHERE id = ?";
+        $this->execute($sql, [$workout_id]);
+    }
+
+    public function getAllExercises()
+    {
+        $sql = "SELECT * FROM exercise e JOIN muscle_group mg on mg.id = e.muscle_id";
+        return $this->execute($sql);
+    }
+
+    public function getMuscleGroups()
+    {
+        $sql = "SELECT * FROM muscle_group mg";
+        return $this->execute($sql);
     }
 }

@@ -42,7 +42,11 @@
                         <td><?php echo $exercise['sets'] ?></td>
                         <td><?php echo $exercise['reps'] ?></td>
                         <td><?php echo $exercise['weight'] ?></td>
-                        <td><button><i class="fa-solid fa-pen"></i></button></td>
+                        <td><button class="exercise_history_button"
+                                data-user_id="<?php echo $_SESSION['user']['user_id']?>"
+                                data-workout_id="<?php echo $_GET['workout_id']?>"
+                                data-exercise_id="<?php echo $exercise['exercise_id']?>"
+                            ><i class="fa-solid fa-chart-column"></i></button></td>
                         <td>
                             <button class="delete_button"
                                     data-user_id="<?php echo $_SESSION['user']['user_id']?>"
@@ -113,7 +117,19 @@
         </div>
     </div>
 
+
+    <!--History Modal-->
+    <div class="modal exercise_history">
+        <button class="closeBtn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-content">
+
+        </div>
+    </div>
     <div class="modal-overview"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="../../js/pages/workout.js"></script>
 <?php }else{
     header("Location: ../dashboard/dashboard.php");

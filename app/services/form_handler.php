@@ -94,7 +94,18 @@ if(!empty($_POST['action'])) {
 
                     echo json_encode($content);
                     break;
+                case 'delete_exercise':
+                    $sets = $_POST['sets'];
+                    $reps = $_POST['reps'];
+                    $weight = $_POST['weight'];
+                    $workout_id = $_POST['workout_id'];
+                    $exercise = $_POST['exercise_id'];
+                    $user_id = $_POST['user_id'];
+                    $workout->insertExerciseInWorkout($sets, $reps, $weight, $workout_id, $exercise, $user_id);
+                    $content = $workout->getWorkoutExercises($workout_id);
+                    break;
                 case 'remove':
+                    $workout_name = $_POST['workout_name'];
                     $workout_id = $_POST['workout_id'];
                     $exercise = $_POST['exercise_id'];
                     $user_id = $_POST['user_id'];
@@ -119,9 +130,16 @@ if(!empty($_POST['action'])) {
                     $data = json_decode(file_get_contents('php://input'), true);
 
                     $user = $data['user_id'];
-                    $workout_name = $data['workout_name'];
+                    $workout_name = $data['workout_id'];
                     $workout->deleteWorkout($workout_name);
                     $content = $workout->getWorkouts($user);
+                    echo json_encode($content);
+                    break;
+                case 'get_exercise_history':
+                    $workout_id = $_POST['workout_id'];
+                    $user_id = $_POST['user_id'];
+                    $exercise_id = $_POST['exercise_id'];
+                    $content = $workout->getExerciseHistory($user_id, $workout_id, $exercise_id);
                     echo json_encode($content);
                     break;
             }
