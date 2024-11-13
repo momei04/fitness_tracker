@@ -48,7 +48,7 @@ CREATE TABLE exercise(
     id INT NOT NULL AUTO_INCREMENT,
     exercise_name VARCHAR(255) NOT NULL UNIQUE,
     muscle_id INT NOT NULL DEFAULT 1,
-    background_img VARCHAR(255) NOT NULL,
+    background_img VARCHAR(255),
     PRIMARY KEY (id),
     FOREIGN KEY (muscle_id) REFERENCES muscle_group(id)
 );

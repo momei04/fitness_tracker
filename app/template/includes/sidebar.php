@@ -19,7 +19,7 @@ require_once '../../../services/classes/Session/Session.php';
     <div class="menu-container">
         <menu>
             <a href="../exercises/exercises.php""><?php echo $session->getLanguageString('EXERCISES', $_SESSION['user']['language']);?></a>
-            <a href="#"><?php echo $session->getLanguageString('STATISTICS', $_SESSION['user']['language']);?></a>
+            <a href="../dashboard/dashboard.php"><?php echo $session->getLanguageString('STATISTICS', $_SESSION['user']['language']);?></a>
             <a href="../workouts/workout.php"><?php echo $session->getLanguageString('WORKOUTS', $_SESSION['user']['language']);?></a>
             <a href="#"><?php echo $session->getLanguageString('SETTINGS', $_SESSION['user']['language']);?></a>
             <a href="">

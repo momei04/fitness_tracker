@@ -7,24 +7,23 @@
 
 .exercise_container{
     width: 100vw;
-    display: flex;
+    columns: 300px;
     padding: 2em 4em;
     gap: 1em;
 }
 
 .grid_item{
-    width: 150px;
-    height: 150px;
     display: flex;
     justify-content: center;
+    height: 300px;
     align-items: center;
-    aspect-ratio: 1;
+    margin-bottom: 1em;
     position: relative;
 }
 
 .grid_item h3{
     color: var(--white);
-    z-index: 9
+    z-index: 3
 }
 
 .grid_item .layer{
@@ -33,5 +32,10 @@
     width: 100%;
     background-color: #000;
     opacity: .75;
-    z-index:5
+    z-index:2;
+    transition: .2s;
+}
+
+.grid_item:hover .layer{
+    opacity: .5;
 }
