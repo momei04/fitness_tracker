@@ -21,7 +21,7 @@
                 <?php foreach($workouts as $workout){?>
                         <div class="workout">
                             <a href="workout_detail.php?workout_id=<?php echo $workout['id'];?>" data-cover_img="<?php echo $workout['path'];?>"><?php echo $workout['workout_name'];?></a>
-                            <button class="delete_button" data-user_id="<?php echo $_SESSION['user']['user_id'];?>" data-workout_name="<?php echo $workout['workout_name'];?>"><i class="fa-solid fa-x"></i></button>
+                            <button class="delete_button" data-user_id="<?php echo $_SESSION['user']['user_id'];?>" data-workout_id="<?php echo $workout['id'];?>" data-workout_name="<?php echo $workout['workout_name'];?>"><i class="fa-solid fa-x"></i></button>
                         </div>
                 <?php }?>
             <?php }?>
@@ -33,7 +33,7 @@
         <div class="layer"></div>
     </div>
 </div>
-
+<button class="exercise_add_container_button"> Add a Workout</button>
 <div class="add_exercise_container">
     <form action="" id="add_workout_form" method="post">
         <div class="input-container">
@@ -73,6 +73,25 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         initializeLinks();
+    });
+
+    let add_form_container = document.querySelector('.exercise_add_container_button');
+    let add_form = document.querySelector('.add_exercise_container')
+    add_form_container.addEventListener('click', (e) => {
+        e.preventDefault();
+        add_form_container.classList.toggle('open_state')
+        add_form.classList.toggle('open_form');
+        console.log(add_form_container.classList.contains('open_state'));
+        console.log(add_form_container);
+        if (add_form_container.classList.contains('open_state')){
+            e.preventDefault();
+
+            add_form_container.innerHTML='<i class="fa-solid fa-xmark"></i>';
+        }else{
+            add_form_container.innerHTML='Add a Workout';
+
+        }
+
     })
     let workout_add = document.querySelector('#add_workout_form');
     workout_add.addEventListener('submit', (e) => {
@@ -99,8 +118,9 @@
             delete_button.addEventListener('click', (e) => {
                 e.preventDefault();
                 let workout_name = delete_button.dataset.workout_name;
+                let workout_id = delete_button.dataset.workout_id;
                 let user_id = delete_button.dataset.user_id;
-                deleteWorkout(workout_name, user_id);
+                deleteWorkout(workout_name,workout_id, user_id);
 
             });
         }
@@ -124,7 +144,7 @@
 
     }
 
-    async function deleteWorkout(workout_name, user_id) {
+    async function deleteWorkout(workout_name, workout_id, user_id) {
         await fetch('../../../services/form_handler.php', {
             method: 'POST',
             headers: {
@@ -135,6 +155,7 @@
                 JSON.stringify({
                     user_id: user_id,
                     workout_name: workout_name,
+                    workout_id: workout_id,
                     page: 'workout',
                     action:  'delete_workout'
                 })
@@ -146,7 +167,7 @@
             for (let workout of data) {
                 html +="<div class='workout'>" +
                     "<a href='workout_detail.php?workout_id="+workout['workout_id']+"' data-cover_img='"+workout['path']+"'>"+ workout['workout_name'] +"</a>" +
-                    "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['workout_id']+"'><i class='fa-solid fa-x'></i></button>"
+                    "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['workout_id']+"' data-workout_name='"+workout['workout_name']+"' ><i class='fa-solid fa-x'></i></button>"
 
                     +"</div>";
             }
@@ -180,7 +201,7 @@
                 for (let workout of data) {
                     html +="<div class='workout'>" +
                         "<a href='workout_detail.php?workout_id="+workout['id']+"' data-cover_img='"+workout['path']+"'>"+ workout['workout_name'] +"</a>" +
-                        "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['id']+"'><i class='fa-solid fa-x'></i></button>"
+                        "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['id']+"' data-workout_name='"+workout['workout_name']+"'><i class='fa-solid fa-x'></i></button>"
 
                     +"</div>";
                 }
@@ -188,4 +209,6 @@
             });
             initializeLinks();
     }
+
+
 </script>

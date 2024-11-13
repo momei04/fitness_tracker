@@ -1,6 +1,5 @@
 <?php
     include_once '../../../services/classes/Helper.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +11,8 @@
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/modal.css">
     <link rel="stylesheet" href="../../style/form.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="../../js/components/modal.js"></script>
 </head>
 <body>

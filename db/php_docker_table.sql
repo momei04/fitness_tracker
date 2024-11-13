@@ -1,4 +1,7 @@
 -- Create Language Tables
+ALTER DATABASE php_docker CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+SET character_set_client = utf8;
+
 CREATE TABLE language_languages(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL UNIQUE,
@@ -85,7 +88,7 @@ CREATE TABLE workout_exercise(
     weight DOUBLE NOT NULL,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW(),
-    PRIMARY KEY (user_id, workout_id, exercise_id),
+    PRIMARY KEY (user_id, workout_id, exercise_id, updated_at),
     FOREIGN KEY (exercise_id) REFERENCES exercise(id),
     FOREIGN KEY (workout_id) REFERENCES workout(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
@@ -152,8 +155,29 @@ VALUES('Brust', '#004b23'),('Bauch', '#006400'),('Trizeps', '#007200'),('Bizeps'
 
 INSERT INTO exercise(exercise_name, muscle_id, background_img)
 VALUES
-    ('Bankdrücken', 1, 'https://modusx.de/wp-content/uploads/bankdruecken-langhantel.jpg'),
+    ('Bench Press', 1, 'https://modusx.de/wp-content/uploads/bankdruecken-langhantel.jpg'),
     ('Situps', 2, 'https://www.fitnessfirst.de/sites/g/files/tbchtk381/files/2022-03/Sit-ups_vs_Crunches_Header.jpg'),
     ('Dips', 1, 'https://www.pullup-dip.de/cdn/shop/articles/straight-bar-dips-parallettes_600x600_a6d0362a-f0c8-49f1-98ea-a445011132e4.jpg?v=1690960849'),
     ('Shoulder Shrugs', 8, 'https://kinxlearning.com/cdn/shop/files/exercise-40_1000x.jpg?v=1613157925'),
+    ('Inclined Bench Press', 1, 'https://kinxlearning.com/cdn/shop/files/exercise-40_1000x.jpg?v=1613157925'),
+    ('Leg Press', 8, 'https://kinxlearning.com/cdn/shop/files/exercise-40_1000x.jpg?v=1613157925'),
+    ('Push ups', 1, 'https://kinxlearning.com/cdn/shop/files/exercise-40_1000x.jpg?v=1613157925'),
     ('Lastzug', 6, 'https://www.uebungen.ws/wp-content/uploads/2011/07/latzug-1.jpg');
+
+INSERT INTO language_strings(language_key, language_string, language_id)
+VALUES ('DESCRIPTION', 'Beschreibung', 1),
+       ('DESCRIPTION', 'Description', 2),
+       ('SETS', 'Sätze', 1),
+       ('REPS', 'Wiederholungen', 1),
+       ('WEIGHT', 'Gewicht', 1),
+       ('SETS', 'Sets', 2),
+       ('REPS', 'Reps', 2),
+       ('WEIGHT', 'Weight', 2),
+       ('EDIT', 'Bearbeiten', 1),
+       ('EDIT', 'Edit', 2),
+       ('DELETE', 'Löschen', 1),
+       ('DELETE', 'Delete', 2),
+       ('WEIGHT_PROGRESSION', 'Gewichtsverlauf', 1),
+       ('WEIGHT_PROGRESSION', 'Weight Progreesion', 2),
+       ('EXERCISE', 'Übung', 1),
+       ('EXERCISE', 'Exercise', 2);

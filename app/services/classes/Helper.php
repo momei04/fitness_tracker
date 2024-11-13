@@ -27,6 +27,11 @@ class Helper extends Db{
         return $workout->getWorkoutExercises($workout_id);
     }
 
+    public function getExerciseHistory($user_id, $workout_id, $exercise_id){
+        $workout = new Workout();
+        return $workout->getExerciseHistory($user_id, $workout_id, $exercise_id);
+    }
+
     public function getExerciseTypes() {
         $workout = new Workout();
         return $workout->getExerciseTypes();
@@ -41,6 +46,17 @@ class Helper extends Db{
     public function getPaths(){
         $workout = new Workout();
         return $workout->getPaths();
+    }
+
+    public function getAllExercises()
+    {
+        $workout = new Workout();
+        return $workout->getAllExercises();
+    }
+
+    public function getMuscleGroups() {
+        $workout = new Workout();
+        return $workout->getMuscleGroups();
     }
 
 
