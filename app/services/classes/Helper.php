@@ -1,6 +1,11 @@
 <?php
+
+
+use Exercises\Exercise;
+
 include_once 'Db.class.php';
 include_once 'Workout/Workout.class.php';
+include_once 'Exercises/Exercise.php';
 class Helper extends Db{
     public function getWorkouts($id){
         $workout = new Workout();
@@ -30,6 +35,26 @@ class Helper extends Db{
     public function getExerciseHistory($user_id, $workout_id, $exercise_id){
         $workout = new Workout();
         return $workout->getExerciseHistory($user_id, $workout_id, $exercise_id);
+    }
+
+    public function getMonthlyRepsByExercise($user_id, $exercise_id){
+        $exercise  = new Exercise();
+        return $exercise->getMonthlyRepsByExercise($user_id, $exercise_id);
+    }
+
+    public function getTotalRepetitionsByUserId($userId){
+        $exercise = new Exercises\Exercise();
+        return $exercise->getTotalRepetitionsByUserId($userId);
+    }
+
+    public function getTotalRepetitionsByExercise($userId, $exerciseId){
+        $exercise = new Exercises\Exercise();
+        return $exercise->getTotalRepetitionsByExercise($userId, $exerciseId);
+    }
+
+    function getMaxWeightByExerciseId($userId, $exerciseId){
+        $exercise = new Exercises\Exercise();
+        return $exercise->getMaxWeightByExerciseId($userId, $exerciseId);
     }
 
     public function getExerciseTypes() {

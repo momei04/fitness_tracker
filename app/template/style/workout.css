@@ -103,6 +103,7 @@
 
 .add_exercise_container.open_form input, .add_exercise_container.open_form select{
     width: 100%;
+    max-width: 100%;
 }
 
 .workout .delete_button i{

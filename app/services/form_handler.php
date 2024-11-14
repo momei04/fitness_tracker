@@ -144,5 +144,20 @@ if(!empty($_POST['action'])) {
                     break;
             }
             break;
+        case 'exercise':
+            require_once 'classes/Exercises/Exercise.php';
+            $exercise = new \Exercises\Exercise();
+            switch ($action) {
+
+                case 'add_exercise':
+                    $muscle_id = $_POST['muscle_id'];
+                    $exercise_name = $_POST['exercise_name'];
+                    $bg_img = $_POST['bg_img'];
+
+                    $exercise->addExercise($muscle_id, $exercise_name, $bg_img);
+                    $content = $exercise->getAllExercises();
+                    echo json_encode($content);
+                    break;
+            }
     }
 }

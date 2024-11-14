@@ -1,5 +1,4 @@
 -- Create Language Tables
-ALTER DATABASE php_docker CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 SET character_set_client = utf8;
 
 CREATE TABLE language_languages(
@@ -48,7 +47,7 @@ CREATE TABLE exercise(
     id INT NOT NULL AUTO_INCREMENT,
     exercise_name VARCHAR(255) NOT NULL UNIQUE,
     muscle_id INT NOT NULL DEFAULT 1,
-    background_img VARCHAR(255) NOT NULL,
+    background_img VARCHAR(255),
     PRIMARY KEY (id),
     FOREIGN KEY (muscle_id) REFERENCES muscle_group(id)
 );
