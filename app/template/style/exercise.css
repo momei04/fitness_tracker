@@ -7,7 +7,7 @@
 
 .exercise_container{
     width: 100vw;
-    columns: 300px;
+    columns: calc(33vw - 5em);
     padding: 2em 4em;
     gap: 1em;
 }

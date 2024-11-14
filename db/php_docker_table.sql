@@ -1,5 +1,4 @@
 -- Create Language Tables
-ALTER DATABASE php_docker CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 SET character_set_client = utf8;
 
 CREATE TABLE language_languages(
