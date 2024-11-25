@@ -17,7 +17,7 @@
         <button id="exercise_add">
             <i class="fa-solid fa-plus"></i>
         </button>
-        <img src="<?php echo $workout_info[0]['path']?>" alt="">
+        <img src="<?php echo $workout_info[0]['cover_img_url']?>" alt="">
         <div class="layer"></div>
     </div>
 
@@ -83,11 +83,14 @@
             <form>
                 <?php $exercise_types = $helper->getExerciseTypes();?>
                 <h3><?php echo $helper->getLanguageString('CREATE_EXERCISE', $_SESSION['user']['language']) ?></h3>
-                <select id="exercise">
-                    <?php foreach ($exercise_types as $exercise_type){ ?>
-                        <option value="<?php echo $exercise_type['id']?>"><?php echo $exercise_type['exercise_name']?></option>
-                    <?php }?>
-                </select>
+                <div class="input-container">
+                    <select id="exercise">
+                        <?php foreach ($exercise_types as $exercise_type){ ?>
+                            <option value="<?php echo $exercise_type['id']?>"><?php echo $exercise_type['exercise_name']?></option>
+                        <?php }?>
+                    </select>
+                </div>
+
                 <div class="input-container">
                     <label for="sets">
                         <?php echo $helper->getLanguageString('SETS', $_SESSION['user']['language']) ?>

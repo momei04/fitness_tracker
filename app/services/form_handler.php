@@ -159,5 +159,28 @@ if(!empty($_POST['action'])) {
                     echo json_encode($content);
                     break;
             }
+        case 'event':
+            require_once 'classes/Event/Event.php';
+            $event = new Event();
+            switch ($action) {
+                case 'add_events':
+                    $start_date = $_POST['start_date'];
+                    $end_date = $_POST['end_date'];
+                    $user_id = $_POST['user_id'];
+                    $workout_id = $_POST['workout_id'];
+                    $title = $_POST['title'];
+
+                    $event->insertEvents($start_date, $end_date, $workout_id, $user_id, $title);
+                    echo json_encode($event->getEvents($user_id));
+                    break;
+
+                case 'update_events':
+                    $event_id = $_POST['event_id'];
+                    $user_id = $_POST['user_id'];
+                    $done = $_POST['done'];
+                    $event->setDone($event_id, $done);
+                    echo json_encode($event->getEvents($user_id));
+                    break;
+            }
     }
 }

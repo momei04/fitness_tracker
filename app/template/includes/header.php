@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION) || !isset($_SESSION['user']) || !isset($_SESSION['user']['user_id'])) {
+    header('location: ../../pages/userAuth/userAuth.php');
+    die();
+}
     include_once '../../../services/classes/Helper.php';
 ?>
 <!DOCTYPE html>

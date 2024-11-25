@@ -20,7 +20,7 @@
             <?php if(!empty($workouts)){?>
                 <?php foreach($workouts as $workout){?>
                         <div class="workout">
-                            <a href="workout_detail.php?workout_id=<?php echo $workout['id'];?>" data-cover_img="<?php echo $workout['path'];?>"><?php echo $workout['workout_name'];?></a>
+                            <a href="workout_detail.php?workout_id=<?php echo $workout['id'];?>" data-cover_img="<?php echo $workout['cover_img_url'];?>"><?php echo $workout['workout_name'];?></a>
                             <button class="delete_button" data-user_id="<?php echo $_SESSION['user']['user_id'];?>" data-workout_id="<?php echo $workout['id'];?>" data-workout_name="<?php echo $workout['workout_name'];?>"><i class="fa-solid fa-x"></i></button>
                         </div>
                 <?php }?>
@@ -54,11 +54,7 @@
         </div>
         <div class="input-container">
             <label for="workout_img"><?php echo $helper->getLanguageString('WORKOUT_IMG', $_SESSION['user']['language']); ?></label>
-            <select name="workout_img" id="workout_img">
-                <?php foreach($paths as $path){?>
-                    <option value="<?php echo $path['img_id']?>"><?php echo $path['path']?></option>
-                <?php } ?>
-            </select>
+            <input type="text" name="workout_img" id="workout_img">
         </div>
         <input name="user_id" type="hidden" id="user_id" value="<?php echo $_SESSION['user']['user_id']; ?>">
 
@@ -101,7 +97,7 @@
         let description = document.querySelector('#desc').value;
         let type_element = document.querySelector('#workout_type');
         let workout_img_element = document.querySelector('#workout_img');
-        let workout_img = workout_img_element.options[workout_img_element.selectedIndex].value;
+        let workout_img = workout_img_element.value;
         let type = type_element.options[type_element.selectedIndex].value;
         console.log(name);
         addWorkout(name, user, type, description, workout_img);
@@ -166,7 +162,7 @@
             let html = '';
             for (let workout of data) {
                 html +="<div class='workout'>" +
-                    "<a href='workout_detail.php?workout_id="+workout['workout_id']+"' data-cover_img='"+workout['path']+"'>"+ workout['workout_name'] +"</a>" +
+                    "<a href='workout_detail.php?workout_id="+workout['workout_id']+"' data-cover_img='"+workout['cover_img_url']+"'>"+ workout['workout_name'] +"</a>" +
                     "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['workout_id']+"' data-workout_name='"+workout['workout_name']+"' ><i class='fa-solid fa-x'></i></button>"
 
                     +"</div>";
@@ -200,7 +196,7 @@
                 let html = '';
                 for (let workout of data) {
                     html +="<div class='workout'>" +
-                        "<a href='workout_detail.php?workout_id="+workout['id']+"' data-cover_img='"+workout['path']+"'>"+ workout['workout_name'] +"</a>" +
+                        "<a href='workout_detail.php?workout_id="+workout['id']+"' data-cover_img='"+workout['cover_img_url']+"'>"+ workout['workout_name'] +"</a>" +
                         "<button class='delete_button' data-user_id='"+workout['user_id']+"' data-workout_id='"+workout['id']+"' data-workout_name='"+workout['workout_name']+"'><i class='fa-solid fa-x'></i></button>"
 
                     +"</div>";

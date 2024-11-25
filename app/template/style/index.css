@@ -158,3 +158,26 @@ nav footer{
     object-fit: cover;
     position: absolute;
 }
+
+
+table{
+    width: 100%;
+    padding: 1em;
+}
+table thead tr th{
+    text-align: left;
+    padding: 1em 0;
+}
+table tbody button{
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 1em;
+    aspect-ratio: 1;
+    width: max-content;
+}
+
+table tbody tr td{
+    padding: .5em 0;
+    font-weight: 200;
+}

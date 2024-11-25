@@ -5,7 +5,6 @@ session_start();
         header("Location: ../dashboard/dashboard.php");
         die();
     }else{
-        include_once '../../includes/header.php';
 ?>
 
 <link rel="stylesheet" href="../../style/form.css">

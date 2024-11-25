@@ -2,10 +2,12 @@
 
 
 use Exercises\Exercise;
+use Relay\Event;
 
 include_once 'Db.class.php';
 include_once 'Workout/Workout.class.php';
 include_once 'Exercises/Exercise.php';
+include_once 'Event/Event.php';
 class Helper extends Db{
     public function getWorkouts($id){
         $workout = new Workout();
@@ -82,6 +84,56 @@ class Helper extends Db{
     public function getMuscleGroups() {
         $workout = new Workout();
         return $workout->getMuscleGroups();
+    }
+
+    public function getWeekdays($language_id)
+    {
+        if ($language_id == 1){
+            $err = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+        }else{
+            $err = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        }
+        return $err;
+    }
+
+    public function getRepeatPatterns($language_id)
+    {
+        if ($language_id == 1){
+            $err = ['Täglich', 'Wöchentlich', 'alle 2 Wochen', 'alle 4 Wochen', 'jeden 2. Tag', 'einmalig'];
+        }else{
+            $err = ['daily', 'weekly', 'every 2 Weeks', 'monthly', 'every other day', 'once'];
+        }
+        return $err;
+    }
+
+    public function getEvents($user_id)
+    {
+        $event = new \Event();
+        return $event->getEvents($user_id);
+    }
+
+    public function getDoneWorkoutPercentageCurrentMonth($user_id)
+    {
+        $workout = new Workout();
+        return $workout->getDoneWorkoutPercentageCurrentMonth($user_id);
+    }
+
+    public function getMostDoneExercises($user_id)
+    {
+        $exercise = new Exercise();
+        return $exercise->getMostDoneExercises($user_id);
+    }
+
+    public function getNextEvent($user_id)
+    {
+        $event = new \Event();
+        return $event->getNextEvent($user_id);
+    }
+
+    public function getMostWorkedMuscleGroups($user_id)
+    {
+        $workout = new Exercise();
+        return $workout->getMostWorkedMuscleGroups($user_id);
     }
 
 

@@ -71,11 +71,10 @@ CREATE TABLE workout(
     workout_description TEXT NOT NULL,
     user_id INT NOT NULL,
     workout_type INT NOT NULL,
-    cover_img_id INT NOT NULL,
+    cover_img_url VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (workout_type) REFERENCES workout_type(id),
-    FOREIGN KEY (cover_img_id) REFERENCES workout_cover_images(img_id)
+    FOREIGN KEY (workout_type) REFERENCES workout_type(id)
 );
 
 CREATE TABLE workout_exercise(
@@ -139,9 +138,6 @@ VALUES('EXERCISES', 'Übungen', 1), ('EXERCISES', 'Exercises', 2),
       ('WORKOUTS', 'Workouts', 1), ('WORKOUTS', 'Workouts', 2),
       ('SETTINGS', 'Einstellungen', 1), ('SETTINGS', 'Settings', 2);
 
-INSERT INTO workout_cover_images(path)
-VALUES('https://fitnessgym-group.de/wp-content/uploads/2021/11/fitness-gym-freihantel.jpg'),
-      ('https://i.ytimg.com/vi/uDPPcjWlzyw/maxresdefault.jpg');
 
 INSERT INTO workout_type(name)
 VALUES('Fußball Training'),
@@ -180,3 +176,15 @@ VALUES ('DESCRIPTION', 'Beschreibung', 1),
        ('WEIGHT_PROGRESSION', 'Weight Progreesion', 2),
        ('EXERCISE', 'Übung', 1),
        ('EXERCISE', 'Exercise', 2);
+
+CREATE TABLE events(
+    event_id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    date DATETIME NOT NULL DEFAULT NOW(),
+    done BOOLEAN NOT NULL DEFAULT FALSE,
+    workout_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY(event_id),
+    FOREIGN KEY(workout_id) REFERENCES workout(id),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);

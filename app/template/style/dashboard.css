@@ -2,25 +2,137 @@
     padding: 2em 4em 0;
     width: 100vw;
 }
-.dashboard-container{
+
+.grid-item{
+    padding: 2em;
+    background-color: var(--white);
+}
+
+.flex{
     display: flex;
     gap: 1em;
-    padding: 2em 4em;
-    flex-basis: max-content;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
-.simple_stats_item{
-    display: flex;
-    width: calc(33% - 1em);
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: .5em;
-    padding: 1em;
-    background-color: var(--gray);
+.dashboard-container{
+    max-height: 100vh;
+    padding: 2em;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr .5fr;
+    grid-template-areas:'done_stats done_workouts'
+'next_workout1 done_exercises'
+'next_workout most_trained_muscle_group';
+    gap: 1em;
 }
 
-.simple_stats_item p{
+.top-exercises-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.content-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    max-width: 50%;
+    flex-basis: 100%;
+    flex-direction: column;
+
+}
+
+.content-container h3{
+    font-size: 24px;
+    align-self: flex-start;
+}
+
+.stats-container{
+    display: flex;
+    width: 100%;
+    flex-basis: 100%;
+    gap: 1em;
+}
+
+.simple_stats_item{
+    background-color: var(--gray);
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.workouts_done-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.workouts_done-container canvas#workouts_done{
+    height: 200px !important;
+    width: auto !important;
+}
+
+
+.workouts_done-container h3{
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.best-growing-exercises{
+    grid-area: done_exercises;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.best-growing-exercises h3{
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.next-workout-preview{
+    grid-area: next_workout;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time{
     opacity: .5;
+}
+
+.title{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sub-title{
+    font-size: 1.5rem;
+    margin-bottom: .75rem;
+}
+
+.goals_overview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: next_workout1;
+}
+
+.goals_overview canvas#must_trained_muscles{
+    max-height: 30vh !important;
+
+    width: auto !important;
 }

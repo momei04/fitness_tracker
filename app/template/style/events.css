@@ -1,0 +1,55 @@
+.event-page{
+    width: 100vw;
+    display: flex;
+    gap: 1em;
+    overflow: hidden;
+}
+
+.done{
+    border: 1px solid forestgreen;
+    padding: .5em;
+    border-radius: 1em;
+}
+
+#add_event_form{
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h3{
+    font-size: 24px;
+}
+
+#add_event_form .input-container{
+    margin-bottom: 1em;
+}
+
+#event_content{
+    width: 50vw;
+    margin: 2em;
+    background-color: var(--white);
+    max-height: calc(100vh - 4em);
+    overflow-y: scroll;
+    justify-content: space-between;
+}
+
+#event_content thead th{
+    height: fit-content;
+    padding: 1em;
+    border-bottom: 1px solid var(--black);
+}
+
+#event_content tbody tr input[type="checkbox"] {
+    width: 3em;
+    height: 3rem;
+    border-radius: 3rem;
+    border: 0px solid transparent;
+    accent-color: #119811;
+}
+#event_content tbody tr td {
+    padding: 1em;
+    height: fit-content;
+    border-bottom: 1px solid var(--gray);
+}

@@ -2,7 +2,10 @@ let insertEventBtn = document.querySelector('#add_exercise');
 insertEventBtn.addEventListener('click', (e) => {
     e.preventDefault();
     initializeModal('#add_exercise', '.create_exercise')
-})
+});
+
+
+
 
 let exercise_add = document.querySelector('#exercise_add');
 
@@ -43,4 +46,5 @@ exercise_add.addEventListener('submit', (e) => {
     let bg_img = document.querySelector('#background_img').value;
 
     addExercise(muscle_id, exercise_name, bg_img)
-})
+});
+
