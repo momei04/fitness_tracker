@@ -7,7 +7,7 @@
 
 <?php
     $workout_info = $helper->getWorkoutDatails($_GET['workout_id']);
-    $exercises = $helper->getWorkoutExercises($_GET['workout_id']);
+    $exercises = $helper->getWorkoutExercises($_GET['workout_id'], $_SESSION['user']['user_id']);
 
 ?>
 <?php if(!empty($workout_info)){ ?>
@@ -51,7 +51,11 @@
                             <button class="delete_button"
                                     data-user_id="<?php echo $_SESSION['user']['user_id']?>"
                                     data-workout_id="<?php echo $_GET['workout_id']?>"
-                                    data-exercise_id="<?php echo $exercise['exercise_id']?>">
+                                    data-exercise_id="<?php echo $exercise['exercise_id']?>"
+                                    data-sets="<?php echo $exercise['sets']?>"
+                                    data-reps="<?php echo $exercise['reps']?>"
+                                    data-weight="<?php echo $exercise['weight']?>"
+                            >
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </td>

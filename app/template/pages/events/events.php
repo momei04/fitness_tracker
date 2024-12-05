@@ -13,11 +13,10 @@
 <div class="event-page">
     <form action="" id="add_event_form" method="post">
         <h3><?php echo 'Create a repeating workout event' ?></h3>
-
-
         <div>
             <div class="calendar-container">
                 <div class="input-container">
+                    <label for="workout">Workout</label>
                     <select name="workout" id="workout">
                         <?php foreach ($workouts as $workout) { ?>
                             <option value="<?php echo $workout['id'] ?>"><?php echo $workout['workout_name'] ?></option>
@@ -25,7 +24,7 @@
                     </select>
                 </div>
                 <div class="input-container">
-                    <label for="title">From Date</label>
+                    <label for="title">Title</label>
                     <input type="text" name="title" id="title">
                 </div>
                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['user_id'] ?>" id="user_id">
@@ -40,23 +39,12 @@
                         <input type="date" name="till_date" id="till_date">
                     </div>
                 </div>
-
-                <!-- <div class="day-container">   <!--Choosing the weekdays-->
-                <?php /*foreach($weekdays as $key => $value){ */?>
-                <div class="input-container">
-                    <input type="checkbox" name="<?php /*echo $value*/?>" id="<?php /*echo $key */?>" value="<?php /*echo $value */?>" content="<?php /*echo $value*/?>">
-                    <label for="<?php /*echo $key */?>"><?php /*echo $value*/?></label>
-                </div>
-
-                <?php /*}*/?>
-            </div>-->
+            </div>
             <div class="input-container repeat_pattern">
+                <label for="repeat_pattern">Repeat Pattern</label>
                 <select name="repeat_pattern" id="repeat_pattern">
-                    <?php foreach($repeat_patterns as $key => $value){ ?>
-                        <div class="input-container">
-                            <option name="<?php echo $value?>" id="<?php echo $key ?>" value="<?php echo $value ?>"><?php echo $value?></option>
-                        </div>
-
+                    <?php foreach($repeat_patterns as $pattern){ ?>
+                            <option name="<?php echo $pattern['title']?>" id="<?php echo $pattern['title'] ?>" value="<?php echo $pattern['value'] ?>"><?php echo $pattern['title']?></option>
                     <?php }?>
                 </select>
             </div>

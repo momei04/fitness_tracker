@@ -11,16 +11,22 @@
             return $this->execute($sql, [$user_id]);
         }
 
-        public function insertEvents($start_date, $end_date, $workout_id, $user_id, $name ){
+        public function insertEvents($start_date, $end_date, $workout_id, $user_id, $name, $pattern ){
             $given_end_date = $end_date;
             $given_start_date = $start_date;
             $date = new DateTime($given_start_date);
             $end_date = new \DateTime($given_end_date);
-            while($date < $end_date) {
-                $sql = "INSERT INTO events(name, done, date, `user_id`, `workout_id`) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO events(name, done, date, `user_id`, `workout_id`) VALUES (?, ?, ?, ?, ?)";
+            if ($pattern == 0){
+
                 $date_string = $date->format('Y-m-d H:i:s');
                 $this->execute($sql, [$name, 0, $date_string, $user_id, $workout_id]);
-                $date = $date->modify('+2 day');
+            }else{
+                while($date < $end_date) {
+                    $date_string = $date->format('Y-m-d H:i:s');
+                    $this->execute($sql, [$name, 0, $date_string, $user_id, $workout_id]);
+                    $date = $date->modify('+'.$pattern.' day');
+                }
             }
 
         }

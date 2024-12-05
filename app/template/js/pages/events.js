@@ -8,15 +8,17 @@ add_event_form.addEventListener('submit', (e) => {
     let workout_element = document.querySelector('#workout');
     let workout_id = workout_element.options[workout_element.selectedIndex].value;
 
+    let pattern_element = document.querySelector('#repeat_pattern');
+    let pattern = pattern_element.options[pattern_element.selectedIndex].value;
 
     let user_id = document.querySelector('#user_id').value;
     let start_date = document.querySelector('#from_date').value;
     let end_date = document.querySelector('#till_date').value;
     let title = document.querySelector('#title').value;
-    add_event(user_id, start_date, end_date, workout_id, title);
+    add_event(user_id, start_date, end_date, workout_id, title, pattern);
 })
 
-async function add_event(user_id, start_date, end_date, workout_id, title) {
+async function add_event(user_id, start_date, end_date, workout_id, title, pattern) {
     await fetch('../../../services/form_handler.php', {
         method: 'POST',
         headers: {
@@ -29,6 +31,7 @@ async function add_event(user_id, start_date, end_date, workout_id, title) {
                 end_date: end_date,
                 user_id: user_id,
                 workout_id: workout_id,
+                pattern: pattern,
                 title: title,
                 page: 'event',
                 action:  'add_events'

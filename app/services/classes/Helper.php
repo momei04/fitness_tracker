@@ -29,9 +29,9 @@ class Helper extends Db{
         return $workout->getWorkoutDatails($workout_id);
     }
 
-    public function getWorkoutExercises($workout_id) {
+    public function getWorkoutExercises($workout_id, $user_id) {
         $workout = new Workout();
-        return $workout->getWorkoutExercises($workout_id);
+        return $workout->getWorkoutExercises($workout_id, $user_id);
     }
 
     public function getExerciseHistory($user_id, $workout_id, $exercise_id){
@@ -99,9 +99,9 @@ class Helper extends Db{
     public function getRepeatPatterns($language_id)
     {
         if ($language_id == 1){
-            $err = ['Täglich', 'Wöchentlich', 'alle 2 Wochen', 'alle 4 Wochen', 'jeden 2. Tag', 'einmalig'];
+            $err = [['title'=>'Täglich', 'value' => 1], ['title'=>'Wöchentlich', 'value' => 7], ['title'=>'alle 2 Wochen', 'value'=> 14], ['title'=>'alle 4 Wochen', 'value'=> 28], ['title'=>'jeden 2. Tag', 'value'=>2], ['title'=>'einmalig', 'value'=>0]];
         }else{
-            $err = ['daily', 'weekly', 'every 2 Weeks', 'monthly', 'every other day', 'once'];
+            $err = [['title'=>'daily', 'value' => 1], ['title'=>'weekly', 'value' => 7], ['title'=>'every other week', 'value'=> 14], ['title'=>'every 4 weeks', 'value'=> 28], ['title'=>'every other day', 'value'=>2], ['title'=>'once', 'value'=>0]];
         }
         return $err;
     }

@@ -33,8 +33,11 @@ function initializeDeletButtons() {
             let user_id = deleteButton.dataset.user_id;
             let exercise_id = deleteButton.dataset.exercise_id;
             let workout_id = deleteButton.dataset.workout_id;
+            let sets = deleteButton.dataset.sets;
+            let reps = deleteButton.dataset.reps;
+            let weight = deleteButton.dataset.weight;
             console.log(workout_id);
-            void deleteExerciseFromWorkout(user_id, exercise_id, workout_id);
+            void deleteExerciseFromWorkout(user_id, exercise_id, workout_id, sets, reps, weight);
             deleteButton.parentElement.parentElement.remove();
         }, false)
     }
@@ -90,7 +93,7 @@ async function insertExerciseIntoWorkout(exercise_id, workout_id, sets, reps, we
 }
 
 
-async function deleteExerciseFromWorkout(user_id, exercise_id, workout_id){
+async function deleteExerciseFromWorkout(user_id, exercise_id, workout_id, sets, reps, weight){
     await fetch('../../../services/form_handler.php', {
         method: 'POST',
         headers: {
@@ -102,6 +105,9 @@ async function deleteExerciseFromWorkout(user_id, exercise_id, workout_id){
                 exercise_id: exercise_id,
                 workout_id: workout_id,
                 user_id: user_id,
+                sets: sets,
+                reps: reps,
+                weight: weight,
                 page: 'workout',
                 action:  'remove'
             })

@@ -90,7 +90,7 @@ if(!empty($_POST['action'])) {
                     $exercise = $_POST['exercise_id'];
                     $user_id = $_POST['user_id'];
                     $workout->insertExerciseInWorkout($sets, $reps, $weight, $workout_id, $exercise, $user_id);
-                    $content = $workout->getWorkoutExercises($workout_id);
+                    $content = $workout->getWorkoutExercises($workout_id, $user_id);
 
                     echo json_encode($content);
                     break;
@@ -102,14 +102,16 @@ if(!empty($_POST['action'])) {
                     $exercise = $_POST['exercise_id'];
                     $user_id = $_POST['user_id'];
                     $workout->insertExerciseInWorkout($sets, $reps, $weight, $workout_id, $exercise, $user_id);
-                    $content = $workout->getWorkoutExercises($workout_id);
+                    $content = $workout->getWorkoutExercises($workout_id, $user_id);
                     break;
                 case 'remove':
-                    $workout_name = $_POST['workout_name'];
+                    $sets = $_POST['sets'];
+                    $reps = $_POST['reps'];
+                    $workout_name = $_POST['workout_id'];
                     $workout_id = $_POST['workout_id'];
                     $exercise = $_POST['exercise_id'];
                     $user_id = $_POST['user_id'];
-                    $workout->delete($workout_id, $exercise, $user_id);
+                    $workout->delete($workout_id, $exercise, $user_id, $sets, $reps);
                     $content = $workout->getWorkoutExercise($workout_id, $exercise, $user_id);
 
                     echo json_encode($content);
@@ -169,8 +171,9 @@ if(!empty($_POST['action'])) {
                     $user_id = $_POST['user_id'];
                     $workout_id = $_POST['workout_id'];
                     $title = $_POST['title'];
+                    $pattern = $_POST['pattern'];
 
-                    $event->insertEvents($start_date, $end_date, $workout_id, $user_id, $title);
+                    $event->insertEvents($start_date, $end_date, $workout_id, $user_id, $title, $pattern);
                     echo json_encode($event->getEvents($user_id));
                     break;
 

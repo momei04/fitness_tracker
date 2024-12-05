@@ -61,14 +61,14 @@ class Workout extends Db{
         return $this->execute($sql, [$workout_id]);
     }
 
-    public function getWorkoutExercises($workout_id) {
+    public function getWorkoutExercises($workout_id, $user_id) {
         $sql = "
                 SELECT we.sets, we.reps, MAX(we.weight) AS weight, we.user_id, e.exercise_name, e.muscle_id, we.exercise_id, we.workout_id 
                 FROM workout_exercise we
                 JOIN exercise e ON e.id = we.exercise_id
-                WHERE we.workout_id = ?
+                WHERE we.workout_id = ? AND we.user_id = ?
                 GROUP BY we.sets, we.reps, we.user_id, e.exercise_name, e.muscle_id, we.exercise_id, we.workout_id";
-        return $this->execute($sql, [$workout_id]);
+        return $this->execute($sql, [$workout_id, $user_id]);
     }
 
     public function getExerciseHistory($user_id, $workout_id, $exercise_id) {
@@ -90,16 +90,16 @@ class Workout extends Db{
         return $this->execute($sql, [$user_id, $workout_id, $exercise, $sets, $reps, $weight]);
     }
 
-    public function delete($workout_id, $exercise, $user_id){
-        $sql = "DELETE FROM workout_exercise WHERE user_id = ? AND workout_id = ? AND exercise_id = ?";
-        return $this->execute($sql, [$user_id, $workout_id, $exercise]);
+    public function delete($workout_id, $exercise, $user_id, $sets, $reps){
+        $sql = "DELETE FROM workout_exercise WHERE user_id = ? AND workout_id = ? AND exercise_id = ? AND sets = ? AND reps = ?";
+        return $this->execute($sql, [$user_id, $workout_id, $exercise, $sets, $reps]);
     }
 
     public function getWorkoutExercise($workout_id, $exercise, $user_id){
         $sql = "SELECT * 
                 FROM workout_exercise we
                 JOIN exercise e ON e.id = we.exercise_id
-                WHERE we.workout_id = ? AND exercise_id = ? AND user_id = ?";
+                WHERE we.workout_id = ? AND we.exercise_id = ? AND we.user_id = ?";
         return $this->execute($sql, [$workout_id, $exercise, $user_id]);
     }
 

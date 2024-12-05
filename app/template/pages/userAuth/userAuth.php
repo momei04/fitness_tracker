@@ -6,7 +6,7 @@ session_start();
         die();
     }else{
 ?>
-
+        <link rel="stylesheet" href="../../style/index.css">
 <link rel="stylesheet" href="../../style/form.css">
 <div class="form-container">
     <div class="container">

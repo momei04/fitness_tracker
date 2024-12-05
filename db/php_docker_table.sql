@@ -86,7 +86,7 @@ CREATE TABLE workout_exercise(
     weight DOUBLE NOT NULL,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW(),
-    PRIMARY KEY (user_id, workout_id, exercise_id, updated_at),
+    PRIMARY KEY (user_id, workout_id, exercise_id, updated_at, sets, reps),
     FOREIGN KEY (exercise_id) REFERENCES exercise(id),
     FOREIGN KEY (workout_id) REFERENCES workout(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
