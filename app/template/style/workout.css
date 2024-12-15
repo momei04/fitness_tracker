@@ -1,12 +1,17 @@
 .workout-container{
+    height: 100%;
     display: flex;
 }
 
 .workouts{
-    padding: 8em;
-    width: 100%;
+    padding-left: 4em;
     display: flex;
+    width: 100%;
+    max-width: 50vw;
+    padding-right: 2em;
+    padding-bottom: 1em;
     flex-direction: column;
+    height: calc(100vh - 8em);
     justify-content: space-between;
 }
 
@@ -41,7 +46,7 @@
 }
 
 .workout .delete_button{
-    background-color: transparent;
+    background-color: pink;
     border: 1px solid var(--black);
     border-radius: 100%;
     padding: .5em;
@@ -111,7 +116,11 @@
 }
 
 .workout-cover-img-container{
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 100%;
+    max-width: 50vw;
     background-color: var(--white);
 }
 

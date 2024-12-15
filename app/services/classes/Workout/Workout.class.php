@@ -143,8 +143,7 @@ class Workout extends Db{
         $sql_done_workout = "SELECT COUNT(event_id) AS 'done'
                 FROM events WHERE done = 1 AND user_id = ? AND MONTH(NOW())";
         $done = $this->execute($sql_done_workout, [$user_id]);
-        var_dump($done);
-        var_dump($all);
+
         if ($done == 0){
             return 0;
         }else{

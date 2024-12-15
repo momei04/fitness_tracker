@@ -37,7 +37,7 @@ class Db{
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         }catch (PDOException $e) {
-            return $e->getMessage();
+            var_dump($e->getMessage());
         }
 
     }

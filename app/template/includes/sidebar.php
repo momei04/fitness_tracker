@@ -7,7 +7,7 @@ $session = new Session\Session();
 
 <?php if (isset($_SESSION['user']['logged_in'])) { ?>
     <link rel="stylesheet" href="../../style/form.css">
-
+<header>
     <button class="nav-button">menu</button>
 
     <nav class="hidden">
@@ -18,8 +18,8 @@ $session = new Session\Session();
         </div>
         <div class="menu-container">
             <menu>
-                <a href="../exercises/exercises.php""><?php echo $session->getLanguageString('EXERCISES', $_SESSION['user']['language']); ?></a>
-                <a href=" ../goals/goals.php""><?php echo $session->getLanguageString('GOALS', $_SESSION['user']['language']); ?></a>
+<!--                <a href="../exercises/exercises.php">--><?php //echo $session->getLanguageString('EXERCISES', $_SESSION['user']['language']); ?><!--</a>-->
+<!--                <a href=" ../goals/goals.php">--><?php //echo $session->getLanguageString('GOALS', $_SESSION['user']['language']); ?><!--</a>-->
                 <a href="../dashboard/dashboard.php"><?php echo $session->getLanguageString('STATISTICS', $_SESSION['user']['language']); ?></a>
                 <a href="../workouts/workout.php"><?php echo $session->getLanguageString('WORKOUTS', $_SESSION['user']['language']); ?></a>
                 <a href="../settings/settings.php"><?php echo $session->getLanguageString('SETTINGS', $_SESSION['user']['language']); ?></a>
@@ -38,6 +38,8 @@ $session = new Session\Session();
         </div>
 
     </nav>
+</header>
+
 
     <script src="../../js/menu.js"></script>
 

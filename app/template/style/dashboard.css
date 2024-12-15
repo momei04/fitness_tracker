@@ -1,7 +1,4 @@
-.title-container{
-    padding: 2em 4em 0;
-    width: 100vw;
-}
+
 
 .grid-item{
     padding: 2em;
@@ -15,15 +12,13 @@
     justify-content: center;
     flex-wrap: wrap;
 }
-
-
-
 .dashboard-container{
     max-height: 100vh;
-    padding: 2em;
+    height: calc(100vh - 11rem);
+    padding: 0 2em;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr .5fr;
+    grid-template-rows: 33.333% 33.333% 33.333%;
     grid-template-areas:'done_stats done_workouts'
 'next_workout1 done_exercises'
 'next_workout most_trained_muscle_group';
@@ -137,4 +132,8 @@
     max-height: 30vh !important;
 
     width: auto !important;
+}
+
+.next_event{
+    height: 30vh;
 }

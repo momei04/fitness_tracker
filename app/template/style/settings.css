@@ -1,4 +1,12 @@
 
 .settings-container{
-    padding: 2em 4em;
+    padding: 0em 4em;
+}
+
+.settings-container form{
+    padding: 0;
+}
+
+.settings-container .title-container{
+    margin-bottom: 1em;
 }

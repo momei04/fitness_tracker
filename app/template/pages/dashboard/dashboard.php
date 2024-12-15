@@ -46,7 +46,7 @@ session_start();
             <?php } ?>
             <canvas id="exercises_months"></canvas>
         </div>
-        <div class="grid-item ">
+        <div class="grid-item next_event">
 
             <?php $next_training = $helper->getNextEvent($_SESSION['user']['user_id']); ?>
             <h3 class="title">Next Event</h3>

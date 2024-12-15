@@ -11,7 +11,7 @@
         <h1><?php echo $helper->getLanguageString('SETTINGS', $_SESSION['user']['language']) ?></h1>
 
     </div>
-    <form action="../../../services/pages/settings/settings.php">
+    <form action="../../../services/pages/settings/settings.php" method="post">
         <h3><?php echo $helper->getLanguageString('PERSONAL_INFORMATION', $_SESSION['user']['language']) ?></h3>
         <div class="input-container">
             <label for="first_name">
@@ -50,7 +50,7 @@
                 <label for="house_nr">
                     <?php echo $helper->getLanguageString('HOUSE_NR', $_SESSION['user']['language']); ?>
                 </label>
-                <input type="text" name="street" id="house_nr" value="<?php echo $_SESSION['user']['house_nr']?>">
+                <input type="text" name="house_nr" id="house_nr" value="<?php echo $_SESSION['user']['house_nr']?>">
             </div>
         </div>
         <div class="ort-container flex ">
@@ -67,6 +67,21 @@
                 </label>
                 <input type="text" name="ort" id="ort" value="<?php echo $_SESSION['user']['ort']?>">
             </div>
+        </div>
+        <div class="input-container">
+            <div>
+                <label for="language_1">
+                    <?php echo $helper->getLanguageString('GERMAN', $_SESSION['user']['language']); ?>
+                </label>
+                <input type="radio" name="language_id" id="language_1" value="1"  <?php if($_SESSION['user']['language'] === 1){echo 'checked';}?>>
+            </div>
+            <div>
+                <label for="language_2">
+                    <?php echo $helper->getLanguageString('ENGLISH', $_SESSION['user']['language']); ?>
+                </label>
+                <input type="radio" name="language_id" id="language_2" value="2" <?php if($_SESSION['user']['language'] === 2){echo 'checked';}?>>
+            </div>
+
         </div>
         <button type="submit"><?php echo $helper->getLanguageString('SUBMIT', $_SESSION['user']['language']); ?></button>
     </form>

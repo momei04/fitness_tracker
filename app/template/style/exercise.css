@@ -10,6 +10,8 @@
     columns: calc(33vw - 5em);
     padding: 2em 4em;
     gap: 1em;
+    height: calc(100vh - 16rem);
+    overflow-y: scroll;
 }
 
 .grid_item{

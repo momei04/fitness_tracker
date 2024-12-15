@@ -2,6 +2,7 @@
     width: 100vw;
     display: flex;
     gap: 1em;
+
     overflow: hidden;
 }
 
@@ -15,7 +16,7 @@
     padding: 4em;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: calc(100vh - 9rem);
 }
 
 h3{

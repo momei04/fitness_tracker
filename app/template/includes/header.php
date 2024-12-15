@@ -21,5 +21,6 @@ if (!isset($_SESSION) || !isset($_SESSION['user']) || !isset($_SESSION['user']['
 </head>
 <body>
     <div class="content">
-        <?php include_once 'sidebar.php'?>
+
         <div class="main">
+<?php include_once 'sidebar.php'?>
