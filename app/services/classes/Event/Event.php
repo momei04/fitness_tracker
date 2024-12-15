@@ -3,7 +3,7 @@
     class Event extends Db{
 
         public function getEvents($user_id){
-            $sql = "SELECT e.name, e.date, wt.name AS workout_type_name, e.event_id, e.done 
+            $sql = "SELECT e.name, e.date, wt.name AS workout_type_name, e.event_id, e.done, e.user_id
                     FROM `events` e 
                     JOIN workout w ON w.id = e.workout_id 
                     JOIN workout_type wt ON wt.id = w.workout_type 

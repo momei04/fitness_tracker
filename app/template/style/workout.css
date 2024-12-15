@@ -135,10 +135,10 @@
 
 /*Workout Detail Page*/
 .workout-detail-container{
-    height: 100vh;
+    height: calc(100vh - 8rem);
     width: 100vw;
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
     overflow: hidden;
     display: grid;

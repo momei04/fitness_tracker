@@ -39,7 +39,6 @@ h3{
 #event_content thead th{
     height: fit-content;
     padding: 1em;
-    border-bottom: 1px solid var(--black);
 }
 
 #event_content tbody tr input[type="checkbox"] {

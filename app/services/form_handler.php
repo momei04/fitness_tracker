@@ -166,8 +166,9 @@ if(!empty($_POST['action'])) {
             $event = new Event();
             switch ($action) {
                 case 'add_events':
-                    $start_date = $_POST['start_date'];
-                    $end_date = $_POST['end_date'];
+                    // date_format(new DateTime($event['date']),"d.m.Y")
+                    $start_date = date_format(new DateTime($_POST['start_date']),"d.m.Y");
+                    $end_date = date_format(new DateTime($_POST['end_date']),"d.m.Y");
                     $user_id = $_POST['user_id'];
                     $workout_id = $_POST['workout_id'];
                     $title = $_POST['title'];
@@ -182,6 +183,7 @@ if(!empty($_POST['action'])) {
                     $user_id = $_POST['user_id'];
                     $done = $_POST['done'];
                     $event->setDone($event_id, $done);
+                    $event->getEvents($user_id);
                     echo json_encode($event->getEvents($user_id));
                     break;
             }
