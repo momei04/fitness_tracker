@@ -14,11 +14,12 @@
 <div class="workout-detail-container">
     <div class="title-container">
         <h1><?php echo $workout_info[0]['workout_name'];?></h1>
+
+        <img src="<?php echo $workout_info[0]['cover_img_url']?>" alt="">
+        <div class="layer"></div>
         <button id="exercise_add">
             <i class="fa-solid fa-plus"></i>
         </button>
-        <img src="<?php echo $workout_info[0]['cover_img_url']?>" alt="">
-        <div class="layer"></div>
     </div>
 
 

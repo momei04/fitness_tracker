@@ -8,7 +8,7 @@
 ?>
 <link rel="stylesheet" href="../../style/workout.css">
 
-<div class="workout-container">
+
 
     <div class="workouts">
         <div class="title-container">
@@ -32,7 +32,6 @@
         <img src="#" alt="">
         <div class="layer"></div>
     </div>
-</div>
 <button class="exercise_add_container_button"> Add a Workout</button>
 <div class="add_exercise_container">
     <form action="" id="add_workout_form" method="post">

@@ -40,7 +40,20 @@ form .input-container{
     gap: .5em;
 }
 
+form.sidebar{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+}
 
+form.sidebar button{
+    background-color: transparent;
+    display: flex;
+    font-size: 1rem;
+    gap: 2em;
+    padding: 0;
+    justify-content: flex-start;
+}
 
 .content{
     padding: 0;

@@ -1,17 +1,11 @@
-.workout-container{
-    height: 100%;
-    display: flex;
-}
+
 
 .workouts{
-    padding-left: 4em;
     display: flex;
     width: 100%;
-    max-width: 50vw;
     padding-right: 2em;
     padding-bottom: 1em;
     flex-direction: column;
-    height: calc(100vh - 8em);
     justify-content: space-between;
 }
 
@@ -20,9 +14,16 @@
     flex-direction: column;
 }
 
+.workouts .title-container{
+    display: grid;
+    height: auto;
+    grid-template-rows: 1fr 1fr;
+}
+
 .workouts .title-container h1{
     font-weight: bold;
     font-size: 4em;
+    line-height: normal;
 }
 
 .workouts .title-container h3{
@@ -46,7 +47,7 @@
 }
 
 .workout .delete_button{
-    background-color: pink;
+    background: transparent;
     border: 1px solid var(--black);
     border-radius: 100%;
     padding: .5em;
@@ -63,7 +64,7 @@
     position: absolute;
     z-index: 20;
     bottom: 4em;
-    left: calc(50% + 1em);
+    left: calc(50% - 1em);
     aspect-ratio: 1;
     transition: .2s;
     border-radius: 100%;
@@ -81,7 +82,7 @@
 .exercise_add_container_button.open_state{
     bottom: calc(100% - 4em);
     top: 1em;
-    left: calc(50% + 1em);
+    left: calc(50% - 1rem);
     padding: 1em;
     width: max-content;
     background-color: var(--orange);
@@ -99,9 +100,8 @@
     justify-content: flex-end;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 100vh;
-    max-width: 50vw;
+    width: 50%;
+    height: 100%;
     right: 0;
     background-color: var(--white);
 }
@@ -116,11 +116,7 @@
 }
 
 .workout-cover-img-container{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 50vw;
+    height: 100%;
     background-color: var(--white);
 }
 
@@ -135,8 +131,8 @@
 
 /*Workout Detail Page*/
 .workout-detail-container{
-    height: calc(100vh - 8rem);
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -196,6 +192,7 @@
     background-color: var(--gray);
     grid-area: exercises;
     padding: 2em;
+    overflow-y: scroll;
 }
 
 .general_info{

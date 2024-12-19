@@ -1,5 +1,9 @@
 let add_event_form = document.querySelector('#add_event_form');
 let doneToggles = document.querySelectorAll('input.done');
+
+let table = new DataTable('#event_content', {
+    // config options...
+});
 add_event_form.addEventListener('submit', (e) => {
     e.preventDefault();
 

@@ -15,12 +15,14 @@ if (!isset($_SESSION) || !isset($_SESSION['user']) || !isset($_SESSION['user']['
     <link rel="stylesheet" href="../../style/index.css">
     <link rel="stylesheet" href="../../style/modal.css">
     <link rel="stylesheet" href="../../style/form.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="../../js/components/modal.js"></script>
 </head>
 <body>
-    <div class="content">
-
-        <div class="main">
 <?php include_once 'sidebar.php'?>
+<main>

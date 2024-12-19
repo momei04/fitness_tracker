@@ -10,7 +10,6 @@
 ?>
 <link rel="stylesheet" href="../../style/events.css">
 
-<div class="event-page">
     <form action="" id="add_event_form" method="post">
         <h3><?php echo 'Create a repeating workout event' ?></h3>
         <div>
@@ -53,7 +52,7 @@
     </form>
     <div class="event-container">
         <div class="time-header"></div>
-        <table id="event_content">
+        <table id="event_content" class="display">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -77,7 +76,6 @@
             </tbody>
         </table>
     </div>
-</div>
 <script>
 
 </script>
